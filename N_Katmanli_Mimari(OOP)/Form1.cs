@@ -29,16 +29,26 @@ namespace N_Katmanli_Mimari_OOP_
 
         private void btnEKLE_Click(object sender, EventArgs e)
         {
-            EntityPersonel ent = new EntityPersonel();
+
+            try
             {
-                ent.Ad = txtAD.Text;
-                ent.Soyad = txtSOYAD.Text;
-                ent.Sehir = txtSEHIR.Text;
-                ent.Maas = short.Parse(txtMAAS.Text);
-                ent.Gorev = txtGOREV.Text;
-                LogicPersonel.LLPersonelEkle(ent);
-                MessageBox.Show("Yeni personel eklendi.");
+                EntityPersonel ent = new EntityPersonel();
+                {
+                    ent.Ad = txtAD.Text;
+                    ent.Soyad = txtSOYAD.Text;
+                    ent.Sehir = txtSEHIR.Text;
+                    ent.Maas = short.Parse(txtMAAS.Text);
+                    ent.Gorev = txtGOREV.Text;
+                    LogicPersonel.LLPersonelEkle(ent);
+                    MessageBox.Show("Yeni personel eklendi.");
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Lütfen bilgileri eksiksiz girdiğinizden emin olunuz");
+            }
+
+           
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -46,25 +56,45 @@ namespace N_Katmanli_Mimari_OOP_
 
         }
 
-        private void btnSil_Click(object sender, EventArgs e)
+        private void btnSil_Click(object sender, EventArgs e) // All debuging is complated.
         {
-            EntityPersonel ent = new EntityPersonel();
-            ent.Id = Convert.ToInt32(txtID.Text);
-            LogicPersonel.LLPersonelSil(ent.Id);
-            MessageBox.Show("Personel silindi.");
+
+            try
+            {
+                EntityPersonel ent = new EntityPersonel();
+                ent.Id = Convert.ToInt32(txtID.Text);
+                LogicPersonel.LLPersonelSil(ent.Id);
+                MessageBox.Show("Personel silindi.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Silmek istediğiniz personeli seçiniz ya da id numarasını giriniz.");
+            }
+
+            
         }
 
-        private void btnGuncelle_Click(object sender, EventArgs e)
+        private void btnGuncelle_Click(object sender, EventArgs e) // All debuging is complated.
         {
-            EntityPersonel ent = new EntityPersonel();
-            ent.Id = Convert.ToInt32(txtID.Text);
-            ent.Ad = txtAD.Text;
-            ent.Soyad = txtSOYAD.Text;
-            ent.Sehir = txtSEHIR.Text;
-            ent.Gorev = txtGOREV.Text;
-            ent.Maas = short.Parse(txtMAAS.Text);
-            LogicPersonel.LLPersonelGuncelle(ent);
-            MessageBox.Show("Personel güncellendi.");
+
+            try
+            {
+                EntityPersonel ent = new EntityPersonel();
+                ent.Id = Convert.ToInt32(txtID.Text);
+                ent.Ad = txtAD.Text;
+                ent.Soyad = txtSOYAD.Text;
+                ent.Sehir = txtSEHIR.Text;
+                ent.Gorev = txtGOREV.Text;
+                ent.Maas = short.Parse(txtMAAS.Text);
+                LogicPersonel.LLPersonelGuncelle(ent);
+                MessageBox.Show("Personel güncellendi.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Güncellemek istediğiniz personeli seçiniz ya da id numarasını giriniz.");
+            }
+
+           
         }
     }
 }
