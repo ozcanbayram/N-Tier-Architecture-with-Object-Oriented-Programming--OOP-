@@ -27,7 +27,7 @@ namespace N_Katmanli_Mimari_OOP_
             dataGridView1.DataSource = PerList;
         }
 
-        private void btnEKLE_Click(object sender, EventArgs e)
+        private void btnEKLE_Click(object sender, EventArgs e)  // All debuging is complated.
         {
 
             try
